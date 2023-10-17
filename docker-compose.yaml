@@ -1,0 +1,35 @@
+services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    volumes:
+      - ./config/loadbalancer.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8080:80"
+
+  node1:
+    image: nginx
+    container_name: node1
+    volumes:
+      - ./config/node.conf:/etc/nginx/conf.d/default.conf
+      - ./html/node1.html:/usr/share/nginx/html/index.html
+    ports:
+      - "80"
+
+  node2:
+    image: nginx
+    container_name: node2
+    volumes:
+      - ./config/node.conf:/etc/nginx/conf.d/default.conf
+      - ./html/node2.html:/usr/share/nginx/html/index.html
+    ports:
+      - "80"
+
+  node3:
+    image: nginx
+    container_name: node3
+    volumes:
+      - ./config/node.conf:/etc/nginx/conf.d/default.conf
+      - ./html/node3.html:/usr/share/nginx/html/index.html
+    ports:
+      - "80"
