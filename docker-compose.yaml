@@ -6,6 +6,10 @@ services:
       - ./config/loadbalancer.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "8080:80"
+    depends_on:
+      - node1
+      - node2
+      - node3
 
   node1:
     image: nginx
